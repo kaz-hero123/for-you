@@ -1,0 +1,130 @@
+/* General Styling */
+body, html {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+}
+
+/* Envelope Styling */
+.container {
+  text-align: center;
+}
+
+.envelope {
+  width: 220px;
+  height: 160px;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.5s;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.envelope:hover {
+  transform: scale(1.1);
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.envelope-body {
+  width: 100%;
+  height: 100%;
+  background: #f1c27d;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: #333;
+  border-radius: 0 0 10px 10px;
+  box-shadow: inset 0 -5px 10px rgba(255, 255, 255, 0.5);
+}
+
+.envelope-flap {
+  width: 100%;
+  height: 100px;
+  background: #d9a066;
+  position: absolute;
+  top: -80px;
+  left: 0;
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+  transform-origin: top;
+  transform: rotateX(0deg);
+  transition: transform 0.7s;
+}
+
+.envelope.open .envelope-flap {
+  transform: rotateX(180deg);
+}
+
+/* Letter Content Styling */
+@keyframes slideIn {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.letter {
+  width: 320px;
+  height: auto;
+  background: #ffffff;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  display: none; /* Hidden initially */
+  opacity: 0; /* Start with opacity 0 */
+  transform: translateY(20px); /* Start with a slight downward position */
+  animation: slideIn 0.5s forwards; /* Add slideIn animation */
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.letter-content {
+  color: #444;
+  font-family: 'Georgia', serif;
+  line-height: 1.6;
+}
+
+.letter h2 {
+  font-size: 1.8em;
+  color: #b35900;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7);
+}
+
+.signature {
+  margin-top: 20px;
+  text-align: right;
+  font-style: italic;
+  color: #888;
+}
